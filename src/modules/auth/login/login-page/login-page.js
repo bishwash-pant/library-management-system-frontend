@@ -13,7 +13,8 @@ function LoginPageComponent() {
         },
         onSubmit: async (values, errors) => {
             const response = await loginService(values);
-            console.log({ response })
+            console.log(response);
+            localStorage.setItem('access-token', response?.data?.['access-token']);
 
         },
         validationSchema: loginSchema

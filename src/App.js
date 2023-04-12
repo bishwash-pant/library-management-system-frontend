@@ -8,9 +8,9 @@ import ReturnBookComponent from "./modules/books/return-book/return-book";
 import RequestBookComponent from "./modules/books/request-book/request-book";
 import SettingsComponent from "./modules/settings/setting";
 import BooksWrapperComponent from "./modules/books/books-wrapper/books-wrapper";
-import { Toaster } from 'react-hot-toast';
 import { RootComponent } from "./modules/root-component/root-component";
-
+import { ToastContainer, } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -36,7 +36,17 @@ function App() {
 
         </Routes>
       </BrowserRouter>
-      <Toaster />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
