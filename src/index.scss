@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.button {
+  @apply bg-green-700 text-white w-[100%] py-2 font-bold rounded-md  shadow-md;
+}
+.form-container {
+  @apply grid grid-cols-1 lg:grid-cols-2 w-[90%] max-w-[30rem] lg:max-w-[100%] lg:min-w-[45rem] lg:w-1/2 mx-auto min-h-[35rem]  bg-slate-100;
+}
+.form-body {
+  @apply self-center flex justify-between flex-col items-center px-2 lg:px-12;
+}
