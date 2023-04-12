@@ -4,7 +4,6 @@ import loginSchema from './schema';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/images/logo-lib.png'
 import { loginService } from '../../../services/auth-service/login-service';
-import { LoaderComponent } from '../../../shared/components/loader/loader';
 function LoginPageComponent() {
     const navigate = useNavigate();
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -13,7 +12,6 @@ function LoginPageComponent() {
             password: '',
         },
         onSubmit: async (values, errors) => {
-            console.log({ values });
             const response = await loginService(values);
             console.log({ response })
 

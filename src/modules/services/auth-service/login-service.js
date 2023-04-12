@@ -1,7 +1,6 @@
-import axios from "axios";
-import { environment } from "../../../enviroment";
 import { authUrls } from "../../shared/constants/urls/urls";
+import httpClient from "../../interceptors/token-interceptor";
 
 export function loginService(loginCredentials) {
-  return axios.post(environment.baseUrl + authUrls.LOGIN, loginCredentials);
+  return httpClient.post(authUrls.LOGIN, loginCredentials);
 }
