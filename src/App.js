@@ -11,31 +11,44 @@ import BooksWrapperComponent from "./modules/books/books-wrapper/books-wrapper";
 import { RootComponent } from "./modules/root-component/root-component";
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserOptionsComponent } from "./modules/users/users-options/users-options";
+import { AdminGuard } from "./modules/admin/admin-wrapper/admin-guard";
+import { ListUsersComponent } from "./modules/admin/list-users/list-users";
+import { AddUserComponent } from "./modules/admin/add-user/add-user";
+import { InvitedUsersComponent } from "./modules/admin/invited/invited-users";
+
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<RootComponent />}>
-            <Route path="/login" element={<LoginPageComponent />} />
-            <Route path="/signup" element={<SignUpPageComponent />} />
-            <Route path='/' element={<LayoutComponent />}>
-              <Route path='/' element={<DashboardPageComponent />} />
-              <Route path='/books' element={<BooksWrapperComponent />} >
-                <Route path='/books' element={<BooksPageComponent />} />
-                <Route path='/books/request' element={<RequestBookComponent />} />
-                <Route path='/books/return' element={<ReturnBookComponent />} />
+    <div className="bg-slate-50 overflow-auto w-[100vw] h-[100vh]">
+      <div className="relative">
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<RootComponent />}>
+              <Route path="/login" element={<LoginPageComponent />} />
+              <Route path="/signup/:token" element={<SignUpPageComponent />} />
+              <Route path='/' element={<LayoutComponent />}>
+                <Route path='/' element={<DashboardPageComponent />} />
+                <Route path='/books' element={<BooksWrapperComponent />} >
+                  <Route path='/books' element={<BooksPageComponent />} />
+                  <Route path='/books/request' element={<RequestBookComponent />} />
+                  <Route path='/books/return' element={<ReturnBookComponent />} />
+                </Route>
+                <Route path='/admin' element={<AdminGuard />}>
+                  <Route path='/admin/users' element={<UserOptionsComponent />} />
+                  <Route path='/admin/users/list' element={<ListUsersComponent />} />
+                  <Route path='/admin/users/add' element={<AddUserComponent />} />
+                  <Route path='/admin/users/invited' element={<InvitedUsersComponent />} />
+                </Route>
+                <Route path='/settings' element={<SettingsComponent />} />
               </Route>
-              <Route path='/settings' element={<SettingsComponent />} />
-
-
             </Route>
-          </Route>
 
 
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </div>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

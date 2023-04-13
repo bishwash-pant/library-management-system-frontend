@@ -1,0 +1,12 @@
+.outlet-wrapper {
+  padding-left: 13rem;
+  padding-top: 3rem;
+  .outlet-container {
+    min-height: 30rem;
+  }
+}
+@media (max-width: 767px) {
+  .outlet-wrapper {
+    padding-left: 4rem;
+  }
+}

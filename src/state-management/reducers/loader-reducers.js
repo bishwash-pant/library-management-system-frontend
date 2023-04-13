@@ -1,16 +1,18 @@
-// const counterSlice = createSlice({
-//     name: 'counter',
-//     initialState,
-//     reducers: {
-//       increment(state) {
-//         state.value++
-//       },
-//       decrement(state) {
-//         state.value--
-//       },
-//       incrementByAmount(state, action: PayloadAction<number>) {
-//         state.value += action.payload
-//       },
-//     },
-//   })
-  
+import { createSlice } from "@reduxjs/toolkit"
+
+const loaderSlice = createSlice({
+    name: 'Loader',
+    initialState: { isLoading: false },
+    reducers: {
+        setLoader(state) {
+            state.isLoading = true;
+        },
+        unsetLoader(state) {
+            state.isLoading = false;
+        },
+
+    },
+})
+export const { setLoader, unsetLoader } = loaderSlice.actions;
+export default loaderSlice.reducer;
+

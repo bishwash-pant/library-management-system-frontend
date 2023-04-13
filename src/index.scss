@@ -23,3 +23,6 @@ code {
 .form-body {
   @apply self-center flex justify-between flex-col items-center px-2 lg:px-12;
 }
+.user-options {
+  @apply bg-white py-10 rounded-xl shadow-md hover:bg-slate-50;
+}

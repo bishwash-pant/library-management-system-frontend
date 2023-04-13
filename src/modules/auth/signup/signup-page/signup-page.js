@@ -1,17 +1,20 @@
 import { useFormik } from 'formik';
 import '../../auth.scss'
 import signUpSchema from './schema';
-import logo from '../../../../assets/images/logo.svg'
-import { Link, useNavigate } from 'react-router-dom';
+import logo from '../../../../assets/images/logo-lib.png'
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { signupService } from '../../../services/auth-service/signup-service';
 function SignUpPageComponent() {
     const navigate = useNavigate();
+    const { token } = useParams();
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
-            email: '',
+            fullName: '',
             password: '',
         },
-        onSubmit: (values, errors) => {
-            navigate('/');
+        onSubmit: async (values, errors) => {
+            const response = await signupService(values, token);
+            console.log(response);
         },
         validationSchema: signUpSchema
     });
@@ -22,9 +25,9 @@ function SignUpPageComponent() {
                     <img src={logo} alt='logo' className='logo-image' />
                     <h2 className='text-lg text-left self-start px-2 font-extrabold'>Registration</h2>
                     <div className="control-item col-span-2 lg:col-span-1 w-[100%]">
-                        <label className='block my-2 px-2'>Email</label>
-                        <input type="text" placeholder="Email" className=' w-[100%] text-lg px-2 rounded-md shadow-inner py-1' value={values.email} onChange={handleChange} onBlur={handleBlur} name='email' />
-                        {touched.email && errors.email ? <small className='text-red-500'>{errors.email}</small> : null}
+                        <label className='block my-2 px-2'>Full Name</label>
+                        <input type="text" placeholder="Firstname Lastname" className=' w-[100%] text-lg px-2 rounded-md shadow-inner py-1' value={values.email} onChange={handleChange} onBlur={handleBlur} name='fullName' />
+                        {touched.fullName && errors.fullName ? <small className='text-red-500'>{errors.fullName}</small> : null}
                     </div>
                     <div className='col-span-1 w-[100%] '>
                         <label className='block my-2 px-2'>Password</label>

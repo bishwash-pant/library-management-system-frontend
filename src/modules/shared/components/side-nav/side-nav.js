@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import './side-nav.scss'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AiFillSetting, AiOutlineUserAdd } from 'react-icons/ai';
+import { BsArrowReturnLeft } from 'react-icons/bs';
+import { MdLibraryBooks, MdSpaceDashboard } from 'react-icons/md';
 
-function SideNavComponent() {
+function SideNavComponent(props) {
+    const { menuItems } = props;
     return (
-        <div className=" w-[10rem] h-[80vh] my-[6rem] side-nav py-10 px-5">
+        <div className="w-[fit-content] fixed side-nav pt-[3rem] px-5 z-10 shadow-md">
 
-            <Link className="nav-item" to={'/'}>Dashboard</Link>
-            <Link className="nav-item" to={'/books'}>My Books</Link>
-            <Link className="nav-item" to={'books/request'}>Request books</Link>
-            <Link className="nav-item" to={'books/return'}>Return books</Link>
-            <Link className="nav-item" to={'/settings'}>Settings</Link>
+            {/* <Link className="nav-item" to={'/'}><MdSpaceDashboard /> <div>Dashboard</div></Link>
+            <Link className="nav-item" to={'/books'}><MdLibraryBooks /> <div>My Books</div></Link>
+            <Link className="nav-item" to={'books/request'}><AiOutlineUserAdd /> <div>Request</div></Link>
+            <Link className="nav-item" to={'books/return'}><BsArrowReturnLeft /> <div>Return</div></Link>
+            <Link className="nav-item" to={'/settings'}><AiFillSetting /> <div>Settings</div></Link> */}
+            {menuItems.map((item, index) => {
+                return <Link key={index} className="nav-item" to={item.path}>{item.icon} <div>{item.name}</div></Link>
+            })}
 
         </div>
     )

@@ -1,11 +1,16 @@
 import { useFormik } from 'formik';
 import '../../auth.scss'
 import loginSchema from './schema';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/images/logo-lib.png'
 import { loginService } from '../../../services/auth-service/login-service';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../../../state-management/reducers/auth-reducers';
 function LoginPageComponent() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const location = useLocation();
+    console.log('path', location.state);;
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             email: '',
@@ -13,8 +18,9 @@ function LoginPageComponent() {
         },
         onSubmit: async (values, errors) => {
             const response = await loginService(values);
-            console.log(response);
             localStorage.setItem('access-token', response?.data?.['access-token']);
+            dispatch(login());
+            navigate(location.state.returnUrl);
 
         },
         validationSchema: loginSchema

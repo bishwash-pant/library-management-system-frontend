@@ -1,11 +1,14 @@
 import { Outlet } from "react-router";
 import { LoaderComponent } from "../shared/components/loader/loader";
+import { useSelector } from "react-redux";
 
 export function RootComponent() {
-    const loader = false;
+    const loadState = useSelector((state) => {
+        return state.loadState.isLoading
+    })
     return (
         <>
-            {loader ? <LoaderComponent /> : null}
+            {loadState ? <LoaderComponent /> : null}
             <Outlet />
         </>
     )

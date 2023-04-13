@@ -1,14 +1,10 @@
-import { Link } from "react-router-dom";
-import logo from '../../../../assets/images/logo.svg'
+import logo from '../../../../assets/images/logo-lib.png'
 import './navbar.scss'
 
 function NavBarComponent() {
-    return <div className="header fixed top-0 py-2 h-[10rem] flex gap-5 w-[100vw] px-5 items-center">
+    return <div className="header fixed top-0 py-2 h-[5rem] flex gap-5 w-[100vw] px-5 items-center shadow-md">
         <img src={logo} alt='logo' className="logo-image" />
 
-        {/* <Link to='dashboard'>Dashboard</Link>
-        <Link to='login'>Login</Link>
-        <Link to='signup'>Signup</Link> */}
         <div>Header elements are placed here</div>
     </div>
 }
