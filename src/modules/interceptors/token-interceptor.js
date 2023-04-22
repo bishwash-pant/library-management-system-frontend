@@ -1,7 +1,6 @@
 import axios from "axios";
 import { environment } from "../../enviroment";
 import { toast } from 'react-toastify';
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setLoader, unsetLoader } from "../../state-management/reducers/loader-reducers";
 

@@ -1,30 +1,46 @@
 import { useFormik } from 'formik';
 import '../../auth.scss'
 import loginSchema from './schema';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/images/logo-lib.png'
 import { loginService } from '../../../services/auth-service/login-service';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../../../state-management/reducers/auth-reducers';
+import { login, setUser } from '../../../../state-management/reducers/auth-reducers';
+import { getProfileService } from '../../../services/auth-service/profile-service';
 function LoginPageComponent() {
     const navigate = useNavigate();
+    const isLoggedIn = useSelector((state) => state.authState.isLoggedIn);
+
     const dispatch = useDispatch();
     const location = useLocation();
-    console.log('path', location.state);;
+
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
         onSubmit: async (values, errors) => {
-            const response = await loginService(values);
-            localStorage.setItem('access-token', response?.data?.['access-token']);
-            dispatch(login());
-            navigate(location.state.returnUrl);
+            try {
+                let response = await loginService(values);
+                localStorage.setItem('access-token', response?.data?.['access-token']);
+                dispatch(login())
+                response = await getProfileService();
+                localStorage.setItem('user', JSON.stringify(response.data));
+                dispatch(login());
+                dispatch(setUser(response.data))
+                return <Navigate to={location.state?.returnUrl || '/'} />
+            }
+            catch (e) {
+                console.log('error', e);
+            }
+
 
         },
         validationSchema: loginSchema
     });
+    if (isLoggedIn) {
+        return <Navigate to={location.state?.returnUrl || '/'} />
+    }
     return (
         <>
             <div className="form-container my-16">

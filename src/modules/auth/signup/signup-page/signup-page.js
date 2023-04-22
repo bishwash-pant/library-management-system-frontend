@@ -4,8 +4,11 @@ import signUpSchema from './schema';
 import logo from '../../../../assets/images/logo-lib.png'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { signupService } from '../../../services/auth-service/signup-service';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../../state-management/reducers/auth-reducers';
 function SignUpPageComponent() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { token } = useParams();
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
@@ -13,8 +16,12 @@ function SignUpPageComponent() {
             password: '',
         },
         onSubmit: async (values, errors) => {
-            const response = await signupService(values, token);
-            console.log(response);
+            await signupService(values, token).then((response) => {
+                localStorage.setItem('access-token', `${response.data['access-token']}`);
+                dispatch(login());
+                navigate('/');
+            });
+
         },
         validationSchema: signUpSchema
     });

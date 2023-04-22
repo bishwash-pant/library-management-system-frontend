@@ -11,7 +11,6 @@ export function InvitedUsersComponent() {
     function getInvitees() {
         invitedUsersService().then((response) => {
             setInvitedUsers(response.data.users);
-            console.log(invitedUsers);
         });
     }
     async function deleteInvitee(index) {
@@ -29,7 +28,7 @@ export function InvitedUsersComponent() {
 
                     <div className="flex items-center gap-1 font-bold"> <AiOutlineMail className="text-xl" />{user.email}
                     </div>
-                    <div className="my-3">Invited At: <span className="font-semibold">{user.createdAt}</span></div>
+                    <div className="my-3">Invited At: <span className="font-semibold">{new Date(user.createdAt).toLocaleString()}</span></div>
                     <button className="bg-red-600 rounded-md py-2 px-2 text-white font-semibold" onClick={() => { deleteInvitee(index) }}>Delete</button>
 
                 </div>)

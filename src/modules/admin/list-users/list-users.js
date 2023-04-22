@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { getUsersService } from "../../services/admin-service/users-service";
+import Modal from "react-modal";
 
 export function ListUsersComponent() {
     const [users, setUsers] = useState([]);
+    
     useEffect(
         function () {
             async function getUsers() {
@@ -20,8 +22,10 @@ export function ListUsersComponent() {
         }, []
     );
     return <div>List users component
+
         {users.map((user, index) => {
             return <div key={index}>{user.fullName}</div>
         })}
+        
     </div>
 }
