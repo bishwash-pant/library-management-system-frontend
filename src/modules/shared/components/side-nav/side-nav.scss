@@ -1,19 +1,13 @@
 .side-nav {
   background-color: white;
   color: gray;
-  height: 80vh;
   min-height: 30rem;
-  border-radius: 0 1rem 1rem 0;
+  border-right: 2px solid rgb(165, 165, 165);
   .nav-item {
     display: block;
     padding: 1rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    border-bottom: 1px solid rgb(211, 211, 211);
-    border-radius: 3px;
-    font-size: larger;
-
+    font-size: 1.25rem;
+    color: black;
     div {
       font-weight: bolder;
     }
@@ -22,13 +16,6 @@
         display: none;
       }
     }
-  }
-  .nav-item:last-child {
-    border-bottom: 0;
-  }
-  .nav-item:hover {
-    background-color: #64c0e4;
-    color: white;
   }
 }
 @media (max-width: 768px) {

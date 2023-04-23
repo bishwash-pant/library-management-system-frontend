@@ -1,6 +1,6 @@
-function DashboardPageComponent(){
+function DashboardPageComponent() {
     return <div>
         Dashboard page is placed here
-        </div>
+    </div>
 }
 export default DashboardPageComponent;

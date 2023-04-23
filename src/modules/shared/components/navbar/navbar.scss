@@ -1,5 +1,7 @@
 .header {
   background-color: white;
+  border-bottom: 2px solid rgb(165, 165, 165);
+  max-height: 100vh !important;
   z-index: 500;
   img {
     width: 5rem;

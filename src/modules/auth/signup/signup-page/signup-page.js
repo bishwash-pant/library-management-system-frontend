@@ -1,46 +1,21 @@
+
+import signUpSchema from './schema';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import '../../auth.scss'
-import signUpSchema from './schema';
-import logo from '../../../../assets/images/logo-lib.png'
-import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { signupService } from '../../../services/auth-service/signup-service';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, setUser } from '../../../../state-management/reducers/auth-reducers';
-import { getProfileService } from '../../../services/auth-service/profile-service';
-import { toast } from 'react-toastify';
-import { useEffect } from 'react';
+import logo from '../../../../assets/images/logo.png'
 function SignUpPageComponent() {
-    const location = useLocation();
     const navigate = useNavigate();
-    const { token } = useParams();
-    const loginState = useSelector(state => state.authState.isLoggedIn);
-    useEffect(() => {
-        console.log(loginState);
-        if (loginState) {
-            navigate('/login');
-        }
-    }, []);
+
 
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
-            fullName: '',
+            email: '',
             password: '',
+            confirmPassword: ''
         },
         onSubmit: async (values, errors) => {
-            try {
-                let response = await signupService(values, token);
-                toast.success(response?.message || 'Sign Up Complete')
-                navigate(location.state?.returnUrl || '/')
-            }
-            catch (e) {
-
-            }
-
-
-
-
-
-
+            navigate('/');
         },
         validationSchema: signUpSchema
     });
@@ -51,9 +26,9 @@ function SignUpPageComponent() {
                     <img src={logo} alt='logo' className='logo-image' />
                     <h2 className='text-lg text-left self-start px-2 font-extrabold'>Registration</h2>
                     <div className="control-item col-span-2 lg:col-span-1 w-[100%]">
-                        <label className='block my-2 px-2'>Full Name</label>
-                        <input type="text" placeholder="Firstname Lastname" className=' w-[100%] text-lg px-2 rounded-md shadow-inner py-1' value={values.email} onChange={handleChange} onBlur={handleBlur} name='fullName' />
-                        {touched.fullName && errors.fullName ? <small className='text-red-500'>{errors.fullName}</small> : null}
+                        <label className='block my-2 px-2'>Email</label>
+                        <input type="text" placeholder="Email" className=' w-[100%] text-lg px-2 rounded-md shadow-inner py-1' value={values.email} onChange={handleChange} onBlur={handleBlur} name='email' />
+                        {touched.email && errors.email ? <small className='text-red-500'>{errors.email}</small> : null}
                     </div>
                     <div className='col-span-1 w-[100%] '>
                         <label className='block my-2 px-2'>Password</label>
