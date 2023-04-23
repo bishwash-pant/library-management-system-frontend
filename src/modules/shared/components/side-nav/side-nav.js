@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import './side-nav.scss'
-import { AiFillSetting, AiOutlineUserAdd } from 'react-icons/ai';
-import { BsArrowReturnLeft } from 'react-icons/bs';
-import { MdLibraryBooks, MdSpaceDashboard } from 'react-icons/md';
 
 function SideNavComponent(props) {
     const { menuItems } = props;

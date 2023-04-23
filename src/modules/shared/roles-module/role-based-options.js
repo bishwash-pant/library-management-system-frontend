@@ -1,6 +1,7 @@
 import { AiFillSetting, AiOutlineUserAdd } from 'react-icons/ai';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { MdLibraryBooks, MdSpaceDashboard } from 'react-icons/md';
+import { TbNotebook } from 'react-icons/tb'
 export const userMenuItems = [
     {
         name: 'Dashboard',
@@ -9,18 +10,18 @@ export const userMenuItems = [
     },
     {
         name: 'My Books',
-        path: '/books',
+        path: '/books/my-books',
+        icon: <TbNotebook />
+    },
+    {
+        name: 'All Books',
+        path: '/books/list',
         icon: <MdLibraryBooks />
     },
     {
-        name: 'Request',
-        path: '/books/request',
+        name: 'My Requests',
+        path: '/books/my-requests',
         icon: <AiOutlineUserAdd />
-    },
-    {
-        name: 'Return',
-        path: '/books/return',
-        icon: <BsArrowReturnLeft />
     },
     {
         name: 'Settings',
@@ -41,12 +42,12 @@ export const adminMenuItems = [
     },
     {
         name: 'Books',
-        path: '/books',
+        path: '/books/options',
         icon: <MdLibraryBooks />
     },
     {
-        name: 'Request',
-        path: '/books/request',
+        name: 'Requests',
+        path: '/books/all-requests',
         icon: <AiOutlineUserAdd />
     },
     {

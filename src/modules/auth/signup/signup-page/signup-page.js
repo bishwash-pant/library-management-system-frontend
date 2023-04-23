@@ -2,25 +2,44 @@ import { useFormik } from 'formik';
 import '../../auth.scss'
 import signUpSchema from './schema';
 import logo from '../../../../assets/images/logo-lib.png'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { signupService } from '../../../services/auth-service/signup-service';
-import { useDispatch } from 'react-redux';
-import { login } from '../../../../state-management/reducers/auth-reducers';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, setUser } from '../../../../state-management/reducers/auth-reducers';
+import { getProfileService } from '../../../services/auth-service/profile-service';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 function SignUpPageComponent() {
+    const location = useLocation();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const { token } = useParams();
+    const loginState = useSelector(state => state.authState.isLoggedIn);
+    useEffect(() => {
+        console.log(loginState);
+        if (loginState) {
+            navigate('/login');
+        }
+    }, []);
+
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
             fullName: '',
             password: '',
         },
         onSubmit: async (values, errors) => {
-            await signupService(values, token).then((response) => {
-                localStorage.setItem('access-token', `${response.data['access-token']}`);
-                dispatch(login());
-                navigate('/');
-            });
+            try {
+                let response = await signupService(values, token);
+                toast.success(response?.message || 'Sign Up Complete')
+                navigate(location.state?.returnUrl || '/')
+            }
+            catch (e) {
+
+            }
+
+
+
+
+
 
         },
         validationSchema: signUpSchema

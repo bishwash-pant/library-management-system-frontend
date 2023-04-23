@@ -2,8 +2,10 @@ import { useFormik } from "formik"
 import { inviteUserSchema } from "./schema";
 import { inviteUserService } from "../../services/admin-service/users-service";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 export function AddUserComponent() {
+    const navigate = useNavigate();
     const { handleBlur, handleChange, handleSubmit, values, errors, touched, resetForm } = useFormik({
         initialValues: {
             email: ''
@@ -13,6 +15,7 @@ export function AddUserComponent() {
             try {
                 const response = await inviteUserService(values);
                 toast.success(response.data.message);
+                navigate('/admin/users/invited');
             } catch (e) {
 
             }

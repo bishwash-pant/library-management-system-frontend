@@ -31,7 +31,7 @@ function LoginPageComponent() {
                 return <Navigate to={location.state?.returnUrl || '/'} />
             }
             catch (e) {
-                console.log('error', e);
+                console.error(e);
             }
 
 
@@ -60,7 +60,6 @@ function LoginPageComponent() {
                     </div>
                     <button type="submit" className='button my-6'>LOGIN</button>
                     <Link className='text-green-600'>Forgot Password?</Link>
-                    <Link to='/signup' className='text-blue-600'>Go to Signup Page</Link>
                 </form>
                 <div className="form-image hidden lg:block">
 
