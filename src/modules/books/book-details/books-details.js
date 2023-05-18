@@ -43,12 +43,17 @@ export function BookDetailsComponent() {
         navigate(`/books/edit/${details._id}`);
     }
     function deleteBook() {
+        // eslint-disable-next-line no-restricted-globals
+        const confirmFlag = confirm('Are you sure you want to delete?')
+        if (!confirmFlag) {
+            return;
+        }
         deleteBookService(details._id).then((response) => {
             toast.success(response.data.message);
             navigate("/books/list");
         });
     }
-    return <div>Book details component
+    return details && <div>Book details component
         <div className="bg-white min-w-[fit-content] w-[50%] mx-auto shadow-lg flex justify-center flex-col items-center rounded-lg px-4 py-4 min-h-[30rem]">
             <div className="text-4xl text-center font-extrabold">
                 {details?.title}

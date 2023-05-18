@@ -19,7 +19,7 @@ export function BookDetailsBasicComponent() {
     function getDetails() {
         getBasicBookDetailsService(id).then((response) => {
             setDetails(response.data);
-        }).catch(error=>{
+        }).catch(error => {
             getDetails();
         });
     }
@@ -48,7 +48,7 @@ export function BookDetailsBasicComponent() {
             getDetails();
         });
     }
-    return <div>Book basic details component
+    return details && <div> Book basic details component
         <div className="bg-white min-w-[fit-content] w-[50%] mx-auto shadow-lg flex justify-center flex-col items-center rounded-lg px-4 py-4 min-h-[30rem]">
             <div className="text-4xl text-center font-extrabold">
                 {details?.title}

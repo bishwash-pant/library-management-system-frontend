@@ -1,5 +1,5 @@
 import { AiFillSetting, AiOutlineUserAdd } from 'react-icons/ai';
-import { BsArrowReturnLeft } from 'react-icons/bs';
+import { FiUsers } from 'react-icons/fi';
 import { MdLibraryBooks, MdSpaceDashboard } from 'react-icons/md';
 import { TbNotebook } from 'react-icons/tb'
 export const userMenuItems = [
@@ -38,7 +38,7 @@ export const adminMenuItems = [
     {
         name: 'Users',
         path: '/admin/users',
-        icon: <MdLibraryBooks />
+        icon: <FiUsers />
     },
     {
         name: 'Books',

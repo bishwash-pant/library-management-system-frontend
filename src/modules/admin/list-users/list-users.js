@@ -6,14 +6,21 @@ import { toast } from "react-toastify";
 import { PaginatorComponent } from "../../shared/components/paginator/paginator";
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { EmptyListComponent } from "../../shared/components/empty-list/empty-list";
+import { useSelector } from "react-redux";
 
 
 export function ListUsersComponent() {
     const [users, setUsers] = useState([]);
     const [count, setCount] = useState(0);
+    const userState = useSelector(state => state.authState?.user);
 
 
     async function deleteUser(index) {
+        // eslint-disable-next-line no-restricted-globals
+        const confirmFlag = confirm('Are you sure you want to delete?')
+        if (!confirmFlag) {
+            return;
+        }
         const id = users[index]._id;
         deleteUsersService(id).then((response) => {
             toast.success(response.data.message);
@@ -31,7 +38,7 @@ export function ListUsersComponent() {
                     </div>
                     <div className="flex items-center gap-1 font-bold text-lg my-2"> <MdTitle className="text-xl" />{user.fullName}
                     </div>
-                    <button className="bg-red-600 rounded-md py-2 px-4 text-white font-semibold flex items-center gap-1" onClick={() => { deleteUser(index) }}><RiDeleteBin6Line />Delete</button>
+                    <button className="bg-red-600 rounded-md py-2 px-4 text-white font-semibold flex items-center gap-1" disabled={user._id === userState._id} onClick={() => { deleteUser(index) }}><RiDeleteBin6Line />Delete</button>
 
                 </div>)
             })}

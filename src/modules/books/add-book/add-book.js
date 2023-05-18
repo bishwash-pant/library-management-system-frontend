@@ -22,7 +22,6 @@ function AddBookComponent(props) {
         validationSchema: bookSchema,
         onSubmit: async (values) => {
             if (bookId) {
-                console.log(values);
                 editBookService(bookId, values).then(response => {
                     toast.success('Edited Successfully');
                     navigate(`/books/details/${bookId}`);

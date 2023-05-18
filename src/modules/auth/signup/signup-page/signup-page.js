@@ -15,7 +15,6 @@ function SignUpPageComponent() {
     const { token } = useParams();
     const loginState = useSelector(state => state.authState.isLoggedIn);
     useEffect(() => {
-        console.log(loginState);
         if (loginState) {
             navigate('/login');
         }

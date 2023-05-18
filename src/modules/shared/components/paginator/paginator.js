@@ -22,12 +22,15 @@ export function PaginatorComponent(props) {
         setCurrentPage(1);
     }, [deleteItem])
     useEffect(() => {
-        const url = pages[currentPage - 1]?.url || '';
-        const urlsChunks = url.split('/');
-        let apiurl = urlsChunks.slice(3, urlsChunks.length).join('/');
-        httpClient.get(apiurl).then(response => {
-            setItems(response.data.items);
-        });
+        if (pages && pages.length) {
+            const url = pages[currentPage - 1]?.url || '';
+            const urlsChunks = url.split('/');
+            let apiurl = urlsChunks.slice(3, urlsChunks.length).join('/');
+            httpClient.get(apiurl).then(response => {
+                setItems(response.data.items);
+            });
+        }
+
     }, [currentPage]);
 
     return (
