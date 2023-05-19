@@ -1,6 +1,8 @@
-function DashboardPageComponent(){
+import { NotificationComponent } from "../../shared/components/notification/notification";
+
+function DashboardPageComponent() {
     return <div>
-        Dashboard page is placed here
-        </div>
+        <NotificationComponent />
+    </div>
 }
 export default DashboardPageComponent;

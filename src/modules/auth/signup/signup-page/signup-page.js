@@ -1,12 +1,10 @@
 import { useFormik } from 'formik';
 import '../../auth.scss'
 import signUpSchema from './schema';
-import logo from '../../../../assets/images/logo-lib.png'
-import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import logo from '../../../../assets/images/logo.png'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { signupService } from '../../../services/auth-service/signup-service';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, setUser } from '../../../../state-management/reducers/auth-reducers';
-import { getProfileService } from '../../../services/auth-service/profile-service';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 function SignUpPageComponent() {
