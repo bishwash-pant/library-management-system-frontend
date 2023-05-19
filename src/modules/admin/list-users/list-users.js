@@ -27,7 +27,7 @@ export function ListUsersComponent() {
             setCount(count + 1);
         })
     }
-    return <div>List users component
+    return <div>
         {!users.length && <EmptyListComponent />}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  mx-auto gap-5 px:3 md:px-10" >
 

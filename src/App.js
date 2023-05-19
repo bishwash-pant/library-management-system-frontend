@@ -3,9 +3,6 @@ import LoginPageComponent from "./modules/auth/login/login-page/login-page";
 import SignUpPageComponent from "./modules/auth/signup/signup-page/signup-page";
 import LayoutComponent from "./modules/shared/components/layout/layout";
 import DashboardPageComponent from "./modules/dashboard/dashboard-page/dashboard-page";
-import BooksPageComponent from "./modules/books/books-page/books-page";
-import ReturnBookComponent from "./modules/books/return-book/return-book";
-import RequestBookComponent from "./modules/books/request-book/request-book";
 import SettingsComponent from "./modules/settings/setting";
 import BooksWrapperComponent from "./modules/books/books-wrapper/books-wrapper";
 import { RootComponent } from "./modules/root-component/root-component";
@@ -17,7 +14,6 @@ import { ListUsersComponent } from "./modules/admin/list-users/list-users";
 import { AddUserComponent } from "./modules/admin/add-user/add-user";
 import { InvitedUsersComponent } from "./modules/admin/invited/invited-users";
 import { BookOptionsComponent } from "./modules/books/books-page/books-options/books-options";
-import { AddBookComponent } from "./modules/books/add-book/add-book";
 import { BookDetailsComponent } from "./modules/books/book-details/books-details";
 import { BookDetailsBasicComponent } from "./modules/books/book-details/books-details-basic";
 import { MyBooksListHOC } from "./modules/books/book-list-hoc/my-books-list-hoc";
@@ -50,7 +46,6 @@ function App() {
                   <Route path='/books/edit/:bookId' element={<EditBookHOC />} />
                   <Route path='/books/my-requests' element={<MyRequestedBooksListHOC />} />
                   <Route path='/books/all-requests' element={<AllRequestsHOC />} />
-                  <Route path='/books/return' element={<ReturnBookComponent />} />
                 </Route>
                 <Route path='/admin' element={<AdminGuard />}>
                   <Route path='/admin/users' element={<UserOptionsComponent />} />

@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import logo from '../../../../assets/images/logo.png'
 import './navbar.scss'
 import { NotificationComponent } from '../notification/notification';
+import { useLocation } from 'react-router';
 
 
 function NavBarComponent() {

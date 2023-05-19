@@ -2,7 +2,7 @@ import { NotificationComponent } from "../../shared/components/notification/noti
 
 function DashboardPageComponent() {
     return <div>
-        <NotificationComponent />
+
     </div>
 }
 export default DashboardPageComponent;

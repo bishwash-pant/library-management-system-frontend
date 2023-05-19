@@ -7,6 +7,7 @@ import { adminMenuItems, userMenuItems } from "../../roles-module/role-based-opt
 import { getProfileService } from "../../../services/auth-service/profile-service";
 import { getProfile, login, resetAll, setUser } from "../../../../state-management/reducers/auth-reducers";
 import { useEffect, useState } from "react";
+import { BreadcrumbsComponent } from "../breadcrumbs/breadcrumbs";
 
 function LayoutComponent(props) {
     // const [user, setUser] = useState(null);
@@ -33,6 +34,10 @@ function LayoutComponent(props) {
             </div>
             <div className="outlet-wrapper">
                 <div className="outlet-container">
+                    <div className="my-2">
+                        <BreadcrumbsComponent />
+                    </div>
+
                     <Outlet />
                 </div>
             </div>

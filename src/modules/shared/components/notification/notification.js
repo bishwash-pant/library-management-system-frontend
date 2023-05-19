@@ -43,7 +43,7 @@ export function NotificationComponent() {
             {isOpen && <div className="bg-white shadow-lg border-[1px] w-[20rem] fixed top-[5rem] right-[0rem] rounded-br-sm rounded-bl-sm ">
                 <div className="max-h-[20rem] overflow-auto">
                     {notifications.length ? notifications.map(notification => {
-                        return <div className="border-2 py-2 px-2">
+                        return <div key={notification._id} className="border-2 py-2 px-2">
                             <p>
                                 {notification.text}
                             </p>
