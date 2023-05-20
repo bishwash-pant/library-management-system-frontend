@@ -22,6 +22,8 @@ import { MyRequestedBooksListHOC } from "./modules/books/book-list-hoc/my-reques
 import { AllRequestsHOC } from "./modules/books/book-list-hoc/all-requests-hoc";
 import { AddBookHOC } from "./modules/books/add-book/book-form-hocs/add-book-hoc";
 import { EditBookHOC } from "./modules/books/add-book/book-form-hocs/edit-book-hoc";
+import { ForgotPasswordComponent } from "./modules/auth/reset-password/confirm-email/forgot-password";
+import { ResetPasswordComponent } from "./modules/auth/reset-password/reset-password/reset-password";
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
             <Route path="/" element={<RootComponent />}>
               <Route path="/login" element={<LoginPageComponent />} />
               <Route path="/signup/:token" element={<SignUpPageComponent />} />
+              <Route path="/forgot-password" element={<ForgotPasswordComponent />} />
+              <Route path="/reset-password/:token" element={<ResetPasswordComponent />} />
               <Route path='/' element={<LayoutComponent />}>
                 <Route path='/' element={<DashboardPageComponent />} />
                 <Route path='/books' element={<BooksWrapperComponent />} >

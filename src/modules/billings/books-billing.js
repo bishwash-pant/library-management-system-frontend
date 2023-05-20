@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllUsersBillingsService, getBooksBillingsService } from "../../services/billing-service/bill-service"
+import { getAllUsersBillingsService, getBooksBillingsService } from "../services/billing-service/bill-service"
 
 export function BooksBillingsComponent() {
     const [billings, setBillings] = useState([])
@@ -20,13 +20,13 @@ export function BooksBillingsComponent() {
                 <div>
                     <div className="border-b-4 py-2 grid grid-cols-2">
                         <div>Title</div>
-                        <div>Total Bill($s)</div>
+                        <div>Total Bill($)</div>
                     </div>
                 </div>
                 <div>
                     {billings.map((bill, index) => {
                         return (
-                            <div className="border-b-2 grid grid-cols-2 py-2  ">
+                            <div key={index} className="border-b-2 grid grid-cols-2 py-2  ">
                                 <div>{bill.title}</div>
                                 <div>{bill.billCost}</div>
                             </div>

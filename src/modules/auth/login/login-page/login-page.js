@@ -58,7 +58,7 @@ function LoginPageComponent() {
                         {touched.password && errors.password ? <small className='text-red-500'>{errors.password}</small> : null}
                     </div>
                     <button type="submit" className='button my-6'>LOGIN</button>
-                    <Link className='text-green-600'>Forgot Password?</Link>
+                    <Link className='text-green-600' to={'/forgot-password'}>Forgot Password?</Link>
                 </form>
                 <div className="form-image hidden lg:block">
 

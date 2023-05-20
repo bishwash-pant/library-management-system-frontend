@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllUsersBillingsService } from "../../services/billing-service/bill-service"
+import { getAllUsersBillingsService } from "../services/billing-service/bill-service"
 
 export function UserBillingsComponent() {
     const [billings, setBillings] = useState([])
