@@ -3,6 +3,7 @@ import logo from '../../../../assets/images/logo.png'
 import './navbar.scss'
 import { NotificationComponent } from '../notification/notification';
 import { useLocation } from 'react-router';
+import { ProfileComponentComponent } from '../profile/profile';
 
 
 function NavBarComponent() {
@@ -14,7 +15,8 @@ function NavBarComponent() {
         <div>{isAdmin?'Admin':'User'}</div> 
         </div>
         
-        <div className='justify-end'>
+        <div className='justify-end flex gap-2'>
+            <ProfileComponentComponent/>
            <NotificationComponent/> 
         </div>
         
