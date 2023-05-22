@@ -70,6 +70,8 @@ export function BookDetailsComponent() {
                     <div>REQUESTED BY</div>
                     <div><span>Name:</span><span className="text-xl font-bold ">{details?.requestedBy?.fullName}</span></div>
                     <div><span>Email:</span><span className="text-xl font-bold " >{details?.requestedBy?.email}</span></div>
+                    <div><span>Requested Date:</span><span className="text-xl font-bold ">{details?.requestedAt}</span></div>
+
 
                     <div className="flex flex-col gap-4 md:flex-row w-[100%] max-w-[20rem] md:w-[50%]  mx-auto my-4  ">
                         <button className="btn bg-slate-100 text-black rounded-md shadow-md px-4 py-1  w-[100%]" onClick={approveRequest}>

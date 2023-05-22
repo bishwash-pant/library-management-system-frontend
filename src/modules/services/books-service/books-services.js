@@ -6,10 +6,13 @@ export function getAllBooksService() {
 export function getMyBooksService() {
     return httpClient.get('books/my-books');
 }
+export function getAllAssignedBooksService() {
+    return httpClient.get('books/assigned');
+}
 export function addBookService(body) {
     return httpClient.post('books/', body);
 }
-export function editBookService(id,body) {
+export function editBookService(id, body) {
     return httpClient.patch(`books/update/${id}`, body);
 }
 export function getBookDetailsService(id) {

@@ -64,7 +64,8 @@ export function BookDetailsBasicComponent() {
                 {details?.requestedBy && <div className="text-center my-4">
                     <div>REQUESTED BY</div>
                     <div><span>Name:</span><span className="text-xl font-bold ">{details?.requestedBy?.fullName}</span></div>
-                    <div><span>Email:</span><span className="text-xl font-bold " >{details?.requestedBy?.email}</span></div>
+
+                    <div><span>Requested Date:</span><span className="text-xl font-bold " >{new Date(details?.requestedAt).toLocaleDateString()}</span></div>
 
 
 
@@ -75,6 +76,7 @@ export function BookDetailsBasicComponent() {
                         <div>ASSIGNED TO</div>
                         <div><span>Name:</span><span className="text-xl font-bold ">{details?.assignedTo?.fullName}</span></div>
                         <div><span>Email:</span><span className="text-xl font-bold ">{details?.assignedTo?.email}</span></div>
+                        <div><span>Assigned Date:</span><span className="text-xl font-bold ">{new Date(details?.assignedAt).toLocaleDateString()}</span></div>
 
                     </div>}
             </div>

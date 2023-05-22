@@ -33,11 +33,14 @@ export function NotificationComponent() {
 
         resetNotification();
     }
+    function handleBlur(e) {
+        setIsOpen(false);
+    }
 
     return <div className="relative flex flex-col">
         <div className="flex">
 
-            <button className="bg-transparent self-end text-xl" onClick={() => { getNotifications() }}>{!isOpen ? <MdNotifications /> : <MdNotificationsOff />}</button>
+            <button className="bg-transparent self-end text-xl" onBlur={handleBlur} onClick={() => { getNotifications() }}  >{!isOpen ? <MdNotifications /> : <MdNotificationsOff />} </button>
         </div>
         <div>
             {isOpen && <div className="bg-white shadow-lg border-[1px] w-[20rem] fixed top-[5rem] right-[0rem] rounded-br-sm rounded-bl-sm ">

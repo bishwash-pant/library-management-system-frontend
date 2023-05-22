@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getAllBooksService, getAllRequestsService, getMyBooksService, myRequestedBooksService, } from "../../services/books-service/books-services";
+import { useState } from "react";
+import { getAllAssignedBooksService, getAllBooksService, getAllRequestsService, getMyBooksService, myRequestedBooksService, } from "../../services/books-service/books-services";
 import { MdTitle } from 'react-icons/md'
 import { BsFillPencilFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { PaginatorComponent } from "../../shared/components/paginator/paginator"
 import { EmptyListComponent } from "../../shared/components/empty-list/empty-list";
 
 function BooksPageComponent(props) {
-    const { user, myRequests, allRequests } = props;
+    const { user, myRequests, allRequests, allAssigned } = props;
     const [books, setBooks] = useState([]);
     const isAdmin = useSelector(state => state.authState?.user?.isAdmin)
     const service = getService();
@@ -20,6 +20,9 @@ function BooksPageComponent(props) {
         }
         else if (allRequests) {
             return getAllRequestsService;
+        }
+        else if (allAssigned) {
+            return getAllAssignedBooksService;
         }
         else {
             return getAllBooksService;
