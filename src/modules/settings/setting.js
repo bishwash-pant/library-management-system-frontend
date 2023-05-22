@@ -39,7 +39,7 @@ function SettingsComponent() {
                 <div className="flex justify-between w-[100%] items-center">
 
                     <div className='text-lg text-left self-start px-2 font-extrabold'>Change Settings</div>
-                    <button className="w-[10rem] bg-red-500 text-white rounded-md shadow-md py-3" onClick={logOut}>Logout</button>
+                    
                 </div>
                 <div className='col-span-1 w-[100%] '>
                     <label className='block my-2 px-2'>Current Password</label>
